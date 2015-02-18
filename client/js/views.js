@@ -78,12 +78,6 @@ var AppView = Backbone.View.extend({
     this.$el.find('#createPost').find('input', 'textarea').val('');
     this.showCreate();
   },
-  editPostCollection: function() {
-    this.$el.find('article').remove();
-    this.addAllPost();
-    console.log('reset')
-
-  },
   addOnePost: function (post, idx, arr) {
     var postView = new PostView({model: post})
     this.$el.append(postView.render().el)

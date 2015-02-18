@@ -6,19 +6,51 @@
     <link rel="stylesheet" href="css/compiledStyle.css">
   </head>
   <body>
-    <header>
-      <h2>Site Name</h2><button name="addProduct"></button>
-    </header>
-    <form id="newProduct" action="index.html">
-      <input type="text" name="title" value="">
-      <input type="text" name="image" value="">
-      <input type="text" name="artist" value="">
-      <input type="text" name="desciption" value="">
-      <input type="text" name="dimensions" value="">
-      <input type="text" name="endx" value="">
-      <input type="text" name="startingbid" value="">
-      <button name="submitProduct"></button>
-    </form>    <div class='.conatiner-fluid'>
+    <div class='.container-fluid'>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <header>
+            <h1>Site Name</h1>
+          </header>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <button name="addProduct" class="btn btn-default">Add New Art</button>
+          <form id="newProduct" action="index.html" class="form-group">
+            <p>
+              <label for="title">Art Title</label>
+              <input type="text" name="newTitle" class="form-control" value="" placeholder="Title of art piece">
+            </p>
+            <p>
+            <p>
+              <label for="image">Image</label>
+              <input type="text" name="newImage" class="form-control" value="" placeholder="Image URL">
+            </p>
+            <p>
+              <label for="artist">Artist</label>
+              <input type="text" name="newArtist" class="form-control" value="" placeholder="Artist name">
+            </p>
+            <p>
+              <label for="description">Description</label>
+              <input type="text" name="newDescription" class="form-control" value="" placeholder="Description of art piece">
+            </p>
+            <p>
+              <label for="dimensions">Dimensions</label>
+              <input type="text" name="newDimensions" class="form-control" value="" placeholder="Dimensions of art piece">
+            </p>
+            <p>
+              <label for="endx">End Bidding</label>
+              <input type="text" name="newEndx" class="form-control" value="" placeholder="Minutes bid will last">
+            </p>
+            <p>
+              <label for="startingbid">Starting Bid Amount</label>
+              <input type="text" name="newStartingBid" class="form-control" value="" placeholder="Starting bid price: $100">
+            </p>
+            <button name="submitProduct" class="btn btn-default">Submit New Art</button>
+        </form>
+        </div>
+      </div>
       <section class="row">
 
       </section>

@@ -42,7 +42,9 @@ var BidModel = Backbone.Model.extend({
   defaults: function () {
     return {
       amount: "generic amount",
-      bidder: "generic name"
+      title: "generic title",
+      bidder: "generic name",
+      time: "generic time"
     };
   },
   initialize: function () {

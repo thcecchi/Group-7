@@ -29,7 +29,7 @@ class AuctionsController < ApplicationController
     @auction = Auction.find params[:id]
     @auction.update_attributes auction_params
     respond_to do |format|
-      format.json { json: @auctions.to_json }
+      format.json { json: @auction.to_json }
       format.html
     end
   end
@@ -38,7 +38,7 @@ class AuctionsController < ApplicationController
     @auction = Auction.find params[:id]
     @auction.delete
     respond_to do |format|
-      format.json { json: @auctions.to_json }
+      format.json { render nothing: true }
       format.html
     end
   end

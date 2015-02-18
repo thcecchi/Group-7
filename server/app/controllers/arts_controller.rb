@@ -1,2 +1,46 @@
 class ArtsController < ApplicationController
+
+  def index
+    @arts = Art.all
+    respond_to do |format|
+      format.json { json: @arts.to_json } 
+      format.html 
+    end
+  end
+
+  def create
+    @art = Art.create art_params  
+    respond_to do |format|
+      format.json { json: @art.to_json } 
+      format.html 
+    end
+  end
+
+  def update 
+    @art = Art.find params[:id]
+    @art.update_attributes art_params
+    respond_to do |format|
+      format.json { json: @art.to_json } 
+      format.html 
+    end
+  end
+
+  def destroy
+    @art = Art.find params[:id]
+    @art.delete
+    respond_to do |format|
+      format.json { render nothing: true } 
+      format.html 
+    end
+
+private 
+
+  def art_params
+    params.require(:auction).permit(
+      :title,
+      :description,
+      :artist,
+      :dimensions
+      )
+  end
 end

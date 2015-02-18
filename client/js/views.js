@@ -1,7 +1,7 @@
 // Art View
 
 var ArtView = Backbone.View.extend({
-  template: _.template(templates.homeItem),
+  template: _.template(template.homeItem),
   tagName: 'div class="col-md-3"',
   initialize: function () {
     console.log(this.el)
@@ -26,15 +26,13 @@ var ArtView = Backbone.View.extend({
   bidOnListing: function (e) {
     e.preventDefault()
     this.model.set({
-      title: this.$el.find('input[name="editTitle"]').val(),
+      amount: $('#newProduct').find('input[name="bidAmount"]').val(),
+      title: this.title,
+      bidder: localHost.localUser,
+      time: moment()
     })
     this.model.save();
-    //
-    // $('.editPost').show();
-    //
-    // $('.sendEdit').hide();
-    // $('#updatePost').hide();
-  // }
+  }
 });
 
 //Collection View
@@ -43,46 +41,54 @@ var AppView = Backbone.View.extend({
   el: $('section'),
   initialize: function () {
     console.log('app view initialized')
-    this.addAllPost();
+    this.addAllListings();
   },
   events: {
-    'click .createPost': 'createPost',
-    'click .showCreate': 'showCreate',
-    'click .sendEdit': 'editPostCollection'
+    'click .createListing': 'createListing',
+    'click .showCreate': 'showCreate'
   },
   showCreate: function () {
-    this.$el.find('#createPost').toggleClass('show')
+    this.$el.find('#newProduct').toggleClass('show')
   },
   createListing: function (e) {
     e.preventDefault();
-    var newPost = {
-      title: $('#createPost').find('input[name="newTitle"]').val(),
-      description: $('#createPost').find('input[name="newImg"]').val(),
-      artist: $('#createPost').find('textarea[name="newContent"]').val(),
-      image: $('#createPost').find('input[name="newDirector"]').val(),
-      dimensions: ,
-      currentBid: ,
-      startx: ,
-      endx: ,
-      bidder: ,
-      amount: ,
-      startingbid
+    var newListing = {
+      title: $('#newProduct').find('input[name="newTitle"]').val(),
+      description: $('#newProduct').find('input[name="newDescription"]').val(),
+      artist: $('#newProduct').find('textarea[name="newArtist"]').val(),
+      image: $('#newProduct').find('input[name="newImage"]').val(),
+      dimensions: $('#newProduct').find('input[name="newDimensions"]').val(),
+      startingbid: $('#newProduct').find('input[name="newStartingBid"]').val(),
+      endx: moment().hours($('#newProduct').find('input[name="newEndx"]').val()),
     };
 
-    var newModelPost = new PostModel(newPost)
-    newModelPost.save();
-    this.collection.add(newModelPost)
-    this.$el.find('article').remove();
-    this.addAllPost();
+    var newAuction = {
+      startx: moment(),
+      endx: moment().hours($('#newProduct').find('input[name="newEndx"]').val()),
+      amount: $('#newProduct').find('input[name="newAmount"]').val(),
+      startingbid: $('#newProduct').find('input[name="newStartingBid"]').val()
+    };
+
+    // create art object
+    var newModelArt = new ArtModel(newListing)
+    newModelArt.save();
+    this.collection.add(newModelArt)
+
+    // create auction object
+    var newModelAuction = new AuctionModel(newPost)
+    newModelAuction.save();
+    //
+    this.$el.find('div class="col-md-3"').remove();
+    this.addAllListings();
     // this.addOnePost(newModelPost); // alternative method
-    this.$el.find('#createPost').find('input', 'textarea').val('');
+    this.$el.find('#newProduct').find('input', 'textarea').val('');
     this.showCreate();
   },
-  addOnePost: function (post, idx, arr) {
-    var postView = new PostView({model: post})
-    this.$el.append(postView.render().el)
+  addOneListing: function (listing, idx, arr) {
+    var artView = new ArtView({model: listing})
+    this.$el.append(artView.render().el)
   },
-  addAllPost: function () {
-    _.each(this.collection.models, this.addOnePost, this)
+  addAllListings: function () {
+    _.each(this.collection.models, this.addOneListing, this)
   }
 });

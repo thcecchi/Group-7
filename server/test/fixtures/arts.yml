@@ -1,10 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  description: MyText
-  artist: MyString
-  dimensions: MyString
+starry_night:
+  title: Starry Night
+  description: A very pretty painting.
+  artist: Vincent van Gogh
+  dimensions: 20 x 20
 
 two:
   title: MyString

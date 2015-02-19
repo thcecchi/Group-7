@@ -4,12 +4,20 @@ body {
   background-color: $background;
 }
 
+#newProduct {
+  display: none;
+}
+
 .hide {
   display: none;
 }
 
 .show {
   display: block;
+}
+
+.bidView {
+  display: none;
 }
 
 h3, h1 {

@@ -1,10 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+first_auction:
   startx: 2015-02-18 14:31:55
-  endx: 2015-02-18 14:31:55
-  startingbid: 1
-  art_id: 
+  endx: 2015-02-18 15:31:55
+  startingbid: 100
+  art: starry_night
 
 two:
   startx: 2015-02-18 14:31:55

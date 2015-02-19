@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  amount: 1
-  bidder: MyString
-  auction_id: 
+first_bid:
+  amount: 100
+  bidder: Ryan
+  auction: first_auction
 
-two:
-  amount: 1
-  bidder: MyString
-  auction_id: 
+second_bid:
+  amount: 110
+  bidder: William
+  auction: first_auction

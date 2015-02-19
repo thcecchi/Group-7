@@ -31,4 +31,54 @@ class ArtsControllerTest < ActionController::TestCase
 
     assert_equal response.code, '200'
   end
+
+  test '#update' do
+    foo = arts(:starry_night)
+    bar = foo.title
+    params = {:id => foo.id, :title => "foozoo"}
+    put :update, format: :json, art: params, id: foo.id
+    assert_equal response.code, '200'
+  end
+
+  test '#destroy' do
+    foo = Art.first
+    params = {id: foo.id}
+    assert_difference 'Art.count', -1 do
+      delete :destroy, format: :json, id: foo.id
+    end
+  end
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end

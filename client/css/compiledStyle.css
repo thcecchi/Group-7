@@ -1,11 +1,17 @@
 body {
   background-color: #D8DAD9; }
 
+#newProduct {
+  display: none; }
+
 .hide {
   display: none; }
 
 .show {
   display: block; }
+
+.bidView {
+  display: none; }
 
 h3, h1 {
   text-align: center;

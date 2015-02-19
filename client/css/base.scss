@@ -4,6 +4,10 @@ body {
   background-color: $background;
 }
 
+#newProduct {
+  display: none;
+}
+
 .hide {
   display: none;
 }
@@ -12,6 +16,9 @@ body {
   display: block;
 }
 
+.bidView {
+  display: none;
+}
 
 h3, h1 {
   text-align: center;

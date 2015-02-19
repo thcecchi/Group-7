@@ -9,10 +9,11 @@ var ArtView = Backbone.View.extend({
   events: {
     'mouseover article': 'showInfo',
     'click article': 'showBidView',
-    'click .deleteItem': 'removeListing'
+    'click .deleteItem': 'removeListing',
+    'click .bidItem': 'bidOnListing'
   },
   showInfo: function () {
-    // this.$el.find('.INFO').show();
+    this.$el.find('.backImg').hide();
   },
   showBidView: function ()  {
     this.$el.find('.bidView').toggleClass('show')
@@ -31,13 +32,14 @@ var ArtView = Backbone.View.extend({
   },
   bidOnListing: function (e) {
     e.preventDefault()
-    this.model.set({
-      amount: $('#newProduct').find('input[name="bidAmount"]').val(),
-      title: this.title,
-      bidder: localHost.localUser,
+    var newBid = {
+      bidAmount: this.$el.find('.bidAmount').attr('ref'),
+      title: this.$el.find('.title').attr('ref'),
+      bidder: localStorage.name,
       time: moment()
-    })
-    this.model.save();
+    }
+    var newModelBid = new BidModel(newBid)
+    newModelBid.save();
   }
 });
 
@@ -63,17 +65,18 @@ var AppView = Backbone.View.extend({
     var newListing = {
       title: $('#newProduct').find('input[name="newTitle"]').val(),
       description: $('#newProduct').find('input[name="newDescription"]').val(),
-      artist: $('#newProduct').find('textarea[name="newArtist"]').val(),
+      artist: $('#newProduct').find('input[name="newArtist"]').val(),
       image: $('#newProduct').find('input[name="newImage"]').val(),
       dimensions: $('#newProduct').find('input[name="newDimensions"]').val(),
       startingbid: $('#newProduct').find('input[name="newStartingBid"]').val(),
+      bidAmount: $('#newProduct').find('input[name="bidAmount"]').val(),
       endx: moment().hours($('#newProduct').find('input[name="newEndx"]').val()),
     };
 
     var newAuction = {
       startx: moment(),
       endx: moment().hours($('#newProduct').find('input[name="newEndx"]').val()),
-      amount: $('#newProduct').find('input[name="newAmount"]').val(),
+      bidAmount: $('#newProduct').find('input[name="bidAmount"]').val(),
       startingbid: $('#newProduct').find('input[name="newStartingBid"]').val()
     };
 

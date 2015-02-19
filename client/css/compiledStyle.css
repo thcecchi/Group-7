@@ -1,5 +1,18 @@
+body {
+  background-color: #D8DAD9; }
+
 .hide {
   display: none; }
 
 .show {
   display: block; }
+
+h3, h1 {
+  text-align: center;
+  margin: 5%; }
+
+.backimg {
+  width: 80%;
+  height: 200px;
+  margin: 10%;
+  background-size: cover; }

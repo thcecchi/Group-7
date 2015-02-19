@@ -8,15 +8,19 @@ var ArtView = Backbone.View.extend({
   },
   events: {
     'mouseover article': 'showInfo',
+    'mouseout article': 'hideInfo',
     'click article': 'showBidView',
     'click .deleteItem': 'removeListing'
   },
   showInfo: function () {
-    // this.$el.find('.INFO').show();
+    this.$el.find('.INFO').show();
+  },
+  hideInfo: function () {
+    this.$el.find('.INFO').hide();
   },
   showBidView: function ()  {
     this.$el.find('.bidView').toggleClass('show')
-    this.$el.find('.tinyView').toggleClass('hide')
+    $('.tinyView').toggleClass('hide')
   },
   render: function () {
     console.log(this.el);
@@ -67,12 +71,12 @@ var AppView = Backbone.View.extend({
       image: $('#newProduct').find('input[name="newImage"]').val(),
       dimensions: $('#newProduct').find('input[name="newDimensions"]').val(),
       startingbid: $('#newProduct').find('input[name="newStartingBid"]').val(),
-      endx: moment().hours($('#newProduct').find('input[name="newEndx"]').val()),
+      endx: moment().hours($('#newProduct').find('select[name="newEndx"]').val()),
     };
 
     var newAuction = {
       startx: moment(),
-      endx: moment().hours($('#newProduct').find('input[name="newEndx"]').val()),
+      endx: moment().hours($('#newProduct').find('select[name="newEndx"]').val()),
       amount: $('#newProduct').find('input[name="newAmount"]').val(),
       startingbid: $('#newProduct').find('input[name="newStartingBid"]').val()
     };
@@ -97,12 +101,4 @@ var AppView = Backbone.View.extend({
   addAllListings: function () {
     _.each(this.collection.models, this.addOneListing, this)
   }
-});
-
-//Clock view
-
-var clock = new FlipClock($('.your-clock'), {
-
-  // clock.setCountdown(true);
-  // clock.setTime(3600);
 });

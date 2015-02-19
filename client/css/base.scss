@@ -8,7 +8,7 @@ body {
   display: none;
 }
 
-.hide {
+.hide, .INFO {
   display: none;
 }
 
@@ -16,12 +16,32 @@ body {
   display: block;
 }
 
+h3, h1 {
+  text-align: center;
+  margin: 5%;
+}
+
 .bidView {
   display: none;
 }
 
-h3, h1 {
-  text-align: center;
+.bidView img {
+  width: 60%;
+}
+
+.bid-info {
+  width: 35%;
+  float: right;
+}
+
+.bidView h3, .bidView p {
+  text-align: right;
+  margin: 0;
+  padding: 5%;
+}
+
+.deleteItem {
+  float: right;
   margin: 5%;
 }
 

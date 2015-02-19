@@ -49,7 +49,7 @@ var AppView = Backbone.View.extend({
   },
   toggleForm: function (event) {
     event.preventDefault();
-    $('#newProduct').toggleClass('show'); //This works in the console, but for some reason I cannot get the click above in events to bind to the toggleForm function. We also may not want to use jQuery here, it can be swapped back to the original way, that is all I could get to work in the console though.
+    $('#newProduct').toggleClass('show');
   },
   createListing: function (e) {
     e.preventDefault();

@@ -3,7 +3,7 @@ class ArtsController < ApplicationController
   def index
     @arts = Art.all
     respond_to do |format|
-      format.json { json: @arts.to_json } 
+      format.json { render json: @arts.to_json }
       format.html 
     end
   end
@@ -11,7 +11,7 @@ class ArtsController < ApplicationController
   def create
     @art = Art.create art_params  
     respond_to do |format|
-      format.json { json: @art.to_json } 
+      format.json { render json: @art.to_json }
       format.html 
     end
   end
@@ -20,7 +20,7 @@ class ArtsController < ApplicationController
     @art = Art.find params[:id]
     @art.update_attributes art_params
     respond_to do |format|
-      format.json { json: @art.to_json } 
+      format.json { render json: @art.to_json }
       format.html 
     end
   end
@@ -32,15 +32,16 @@ class ArtsController < ApplicationController
       format.json { render nothing: true } 
       format.html 
     end
+  end
 
 private 
 
   def art_params
-    params.require(:auction).permit(
+    params.require(:art).permit(
       :title,
       :description,
       :artist,
       :dimensions
-      )
+    )
   end
 end

@@ -1,5 +1,11 @@
-.hide {
+form {
   display: none; }
 
 .show {
   display: block; }
+
+.hide {
+  display: none; }
+
+.bidView {
+  display: none; }

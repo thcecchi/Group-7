@@ -1,7 +1,7 @@
 //Art model
 
 var ArtModel = Backbone.Model.extend({
-  urlRoot: '',
+  urlRoot: 'http://tiy-fee-rest.herokuapp.com/collections/tylerbb4',
   idAttribute: '_id',
   defaults: function () {
     return {
@@ -20,7 +20,7 @@ var ArtModel = Backbone.Model.extend({
 //Auction model
 
 var AuctionModel = Backbone.Model.extend({
-  urlRoot: '',
+  urlRoot: 'http://tiy-fee-rest.herokuapp.com/collections/tylerbb4',
   idAttribute: '_id',
   defaults: function () {
     return {
@@ -38,7 +38,7 @@ var AuctionModel = Backbone.Model.extend({
 //Bid model
 
 var BidModel = Backbone.Model.extend({
-  urlRoot: '',
+  urlRoot: 'http://tiy-fee-rest.herokuapp.com/collections/tylerbb4',
   idAttribute: '_id',
   defaults: function () {
     return {

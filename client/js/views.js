@@ -7,10 +7,16 @@ var ArtView = Backbone.View.extend({
     console.log(this.el)
   },
   events: {
-    'mouseover .col-md-3': 'showInfo'
+    'mouseover .col-md-3': 'showInfo',
+    'click .col-md-3': 'showBidView',
+    'click .deleteItem': 'removeListing'
   },
   showInfo: function () {
-    this.$el.find('.INFO').show();
+    // this.$el.find('.INFO').show();
+  },
+  showBidView: function ()  {
+    this.$el.find('.bidView').toggleClass('show')
+    this.$el.find('.col-md-3').toggleClass('hide')
   },
   render: function () {
     console.log(this.el);
@@ -48,8 +54,8 @@ var AppView = Backbone.View.extend({
     'click #addButton': 'toggleForm'
   },
   toggleForm: function (event) {
-    event.preventDefault();
-    $('#newProduct').toggleClass('show'); //This works in the console, but for some reason I cannot get the click above in events to bind to the toggleForm function. We also may not want to use jQuery here, it can be swapped back to the original way, that is all I could get to work in the console though.
+    this.$el.find('#newProduct').toggleClass('show'); //This works in the console, but for some reason I cannot get the click above in events to bind to the toggleForm function. We also may not want to use jQuery here, it can be swapped back to the original way, that is all I could get to work in the console though.
+    console.log('shown')
   },
   createListing: function (e) {
     e.preventDefault();
@@ -76,7 +82,7 @@ var AppView = Backbone.View.extend({
     this.collection.add(newModelArt)
 
     // create auction object
-    var newModelAuction = new AuctionModel(newPost)
+    var newModelAuction = new AuctionModel(newAuction)
     newModelAuction.save();
     //
     this.$el.find('div class="col-md-3"').remove();

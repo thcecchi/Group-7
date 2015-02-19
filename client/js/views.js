@@ -93,3 +93,11 @@ var AppView = Backbone.View.extend({
     _.each(this.collection.models, this.addOneListing, this)
   }
 });
+
+//Clock view
+
+var clock = new FlipClock($('.your-clock'), {
+
+  // clock.setCountdown(true);
+  // clock.setTime(3600);
+});

@@ -27,7 +27,7 @@ class ArtsController < ApplicationController
 
   def destroy
     @art = Art.find params[:id]
-    @art.delete
+    @art.destroy
     respond_to do |format|
       format.json { render nothing: true } 
       format.html 

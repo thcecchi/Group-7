@@ -12,6 +12,7 @@
 !/log/.keep
 /tmp
 
+.env
 config/.env
 
 db/schema.rb

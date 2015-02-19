@@ -14,16 +14,21 @@ class AuctionsControllerTest < ActionController::TestCase
   end
 
   test '#create' do
-    test_attributes = {
+    auction_attributes = {
       startx: Time.now.to_s,
       endx: (Time.now + 1.hour).to_s,
       starting_bid: 1000,
-      art_id: Art.first.id
+    }
 
+    art_attributes = {
+      title: "Mona Borat",
+      description: "very nahhhs",
+      dimensions: "adsfs",
+      artist: "Borat"
     }
 
     assert_difference 'Auction.count' do
-      post :create, format: :json, auction: test_attributes
+      post :create, format: :json, auction: auction_attributes, art: art_attributes
     end
 
     assert_equal response.code, '200'

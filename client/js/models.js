@@ -26,7 +26,8 @@ var AuctionModel = Backbone.Model.extend({
     return {
       startx: "generic time",
       endx: "generic time",
-      startingbid: "generic amount"
+      startingbid: "generic amount",
+      amount: "generic amount"
     };
   },
   initialize: function () {
@@ -44,7 +45,7 @@ var BidModel = Backbone.Model.extend({
       amount: "generic amount",
       title: "generic title",
       bidder: "generic name",
-      time: "generic time"
+      time: moment()
     };
   },
   initialize: function () {

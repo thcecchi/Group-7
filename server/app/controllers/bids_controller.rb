@@ -9,7 +9,8 @@ class BidsController < ApplicationController
   end
 
   def create
-    @bid = Bid.create bid_params  
+    @bid = Bid.create bid_params
+    Pusher["auction-#{@bid.auction.id}"].trigger('bid_received', { amount: @bid.amount, bidder: @bid.bidder })
     respond_to do |format|
       format.json { json: @bid.to_json } 
       format.html 
@@ -32,6 +33,7 @@ class BidsController < ApplicationController
       format.json { render nothing: true } 
       format.html 
     end
+  end
 
 private 
 

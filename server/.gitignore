@@ -13,3 +13,5 @@
 /tmp
 
 config/.env
+
+db/schema.rb

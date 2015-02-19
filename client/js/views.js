@@ -54,8 +54,10 @@ var AppView = Backbone.View.extend({
     'click #addButton': 'toggleForm'
   },
   toggleForm: function (event) {
+<<<<<<< HEAD
     this.$el.find('#newProduct').toggleClass('show'); //This works in the console, but for some reason I cannot get the click above in events to bind to the toggleForm function. We also may not want to use jQuery here, it can be swapped back to the original way, that is all I could get to work in the console though.
     console.log('shown')
+=======
   },
   createListing: function (e) {
     e.preventDefault();
@@ -98,4 +100,12 @@ var AppView = Backbone.View.extend({
   addAllListings: function () {
     _.each(this.collection.models, this.addOneListing, this)
   }
+});
+
+//Clock view
+
+var clock = new FlipClock($('.your-clock'), {
+
+  // clock.setCountdown(true);
+  // clock.setTime(3600);
 });

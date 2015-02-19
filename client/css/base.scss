@@ -1,4 +1,10 @@
-form {
+$background: #D8DAD9;
+
+body {
+  background-color: $background;
+}
+
+.hide {
   display: none;
 }
 
@@ -6,10 +12,16 @@ form {
   display: block;
 }
 
-.hide {
-  display: none;
+
+h3, h1 {
+  text-align: center;
+  margin: 5%;
 }
 
-.bidView {
-  display: none;
+.backimg {
+  width: 80%;
+  height: 200px;
+  margin: 10%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

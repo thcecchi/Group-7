@@ -45,6 +45,10 @@ h3, h1 {
   margin: 5%;
 }
 
+.tinyView {
+  position: relative;
+}
+
 .backimg {
   width: 80%;
   height: 200px;
@@ -53,7 +57,6 @@ h3, h1 {
   background-size: cover;
   padding-top: 10%;
   color: white;
-  position: relative;
 }
 
 div.backimg:hover {
@@ -69,21 +72,6 @@ div.backimg:hover {
 }
 
 .INFO {
-  position: absolute;
+  position: relative;
   color: white;
-}
-
-.line1 {
-  top: 10%;
-  left: 25%;
-}
-
-.line2 {
-  top: 20%;
-  left: 25%;
-}
-
-.line3 {
-  top: 30%;
-  left: 25%;
 }

@@ -33,6 +33,9 @@ h3, h1 {
   float: right;
   margin: 5%; }
 
+.tinyView {
+  position: relative; }
+
 .backimg {
   width: 80%;
   height: 200px;
@@ -40,8 +43,7 @@ h3, h1 {
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 10%;
-  color: white;
-  position: relative; }
+  color: white; }
 
 div.backimg:hover {
   filter: blur(5px);
@@ -54,17 +56,10 @@ div.backimg:hover {
   box-shadow: 0 0 10px #ccc; }
 
 .INFO {
-  position: absolute;
-  color: white; }
-
-.line1 {
-  top: 10%;
-  left: 25%; }
-
-.line2 {
-  top: 20%;
-  left: 25%; }
-
-.line3 {
-  top: 30%;
-  left: 25%; }
+  position: relative;
+  color: white;
+  filter: none;
+  -webkit-filter: none;
+  -moz-filter: none;
+  -ms-filter: none;
+  -o-filter: none; }

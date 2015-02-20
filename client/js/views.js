@@ -10,7 +10,8 @@ var ArtView = Backbone.View.extend({
     'mouseover .backimg': 'showInfo',
     'mouseout article': 'hideInfo',
     'click .backimg': 'showBidView',
-    'click .deleteItem': 'removeListing'
+    'click .deleteItem': 'removeListing',
+    'click .bidView': 'showTinyView'
   },
   showInfo: function () {
     this.$el.find('.INFO').show();
@@ -19,6 +20,10 @@ var ArtView = Backbone.View.extend({
     this.$el.find('.INFO').hide();
   },
   showBidView: function ()  {
+    this.$el.find('.bidView').toggleClass('show')
+    $('.tinyView').toggleClass('hide')
+  },
+  showTinyView: function () {
     this.$el.find('.bidView').toggleClass('show')
     $('.tinyView').toggleClass('hide')
   },

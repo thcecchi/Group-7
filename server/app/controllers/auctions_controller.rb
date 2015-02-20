@@ -3,40 +3,33 @@ class AuctionsController < ApplicationController
   def index
     @auctions = Auction.all
     respond_to do |format|
-      format.json { json: @auctions.to_json }
+      format.json { render json: @auctions.to_json }
       format.html
     end
   end
 
-  # def new
-  #   @auction = Auction.new
-  # end
 
   def create
     @auction = Auction.create auction_params
-    redirect_to root_path
+    respond_to do |format|
+      format.json { render json: @auction.to_json }
+      format.html
+    end 
   end
 
-  # def show
-  #   @auction = Auction.find params[:id]
-  # end
-
-  # def edit
-  #   @auction = Auction.find params[:id]
-  # end
 
   def update
     @auction = Auction.find params[:id]
     @auction.update_attributes auction_params
     respond_to do |format|
-      format.json { json: @auction.to_json }
+      format.json { render json: @auction.to_json }
       format.html
     end
   end
 
   def destroy
     @auction = Auction.find params[:id]
-    @auction.delete
+    @auction.destroy
     respond_to do |format|
       format.json { render nothing: true }
       format.html
@@ -50,7 +43,13 @@ class AuctionsController < ApplicationController
     params.require(:auction).permit(
       :startx,
       :endx,
-      :startingbid
+      :startingbid,
+      :art_id
       )
   end
 end
+
+
+
+
+

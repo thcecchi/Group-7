@@ -9,7 +9,7 @@ class ArtsController < ApplicationController
   end
 
   def create
-    @art = Art.create art_params  
+    @art = Art.create art_params
     respond_to do |format|
       format.json { render json: @art.to_json }
       format.html 
@@ -27,7 +27,7 @@ class ArtsController < ApplicationController
 
   def destroy
     @art = Art.find params[:id]
-    @art.delete
+    @art.destroy
     respond_to do |format|
       format.json { render nothing: true } 
       format.html 
@@ -41,7 +41,8 @@ private
       :title,
       :description,
       :artist,
-      :dimensions
+      :dimensions,
+      :image_url
     )
   end
 end

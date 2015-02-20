@@ -1,7 +1,9 @@
 //Art model
 
 var ArtModel = Backbone.Model.extend({
-  urlRoot: 'http://localhost:9000/arts',
+
+  urlRoot: 'http://tiy-fee-rest.herokuapp.com/collections/nocommtest',
+  url: 'http://tiy-fee-rest.herokuapp.com/collections/nocommtest',
   idAttribute: '_id',
   defaults: function () {
     return {
@@ -10,7 +12,8 @@ var ArtModel = Backbone.Model.extend({
       artist: "random artist",
       image: "http://www.fillmurray.com/200/200",
       dimensions: "generic dimensions",
-      bidAmount: "generic amount"
+      bidAmount: "generic amount",
+      auction: ""
     };
   },
   initialize: function () {
@@ -21,7 +24,8 @@ var ArtModel = Backbone.Model.extend({
 //Auction model
 
 var AuctionModel = Backbone.Model.extend({
-  urlRoot: 'http://localhost:9000/auctions',
+
+  urlRoot: 'http://tiy-fee-rest.herokuapp.com/collections/nocommtest',
   idAttribute: '_id',
   defaults: function () {
     return {
@@ -39,14 +43,16 @@ var AuctionModel = Backbone.Model.extend({
 //Bid model
 
 var BidModel = Backbone.Model.extend({
-  urlRoot: 'http://localhost:9000/bids',
+
+  urlRoot: 'http://tiy-fee-rest.herokuapp.com/collections/nocommtest',
   idAttribute: '_id',
   defaults: function () {
     return {
       bidAmount: "generic amount",
       title: "generic title",
       bidder: "generic name",
-      time: moment()
+      time: moment(),
+      art: "generic id"
     };
   },
   initialize: function () {

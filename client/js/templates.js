@@ -1,7 +1,7 @@
 var template = {};
 
 template.homeItem = [
-  '<article class="tinyView col-md-3">',
+  '<article class="tinyView col-md-3" data-artid="<%= _id %>">',
   '<div class="backimg" style="background-image: url(<%= image %>)">',
   '<h3><%= artist %></h3>',
   '<h3 class="title" ref="<%= title %>"><%= title %></h3>',

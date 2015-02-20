@@ -4,10 +4,12 @@ first_auction:
   startx: 2015-02-18 14:31:55
   endx: 2015-02-18 15:31:55
   startingbid: 100
+  bid_amount: 10
   art: starry_night
 
 two:
   startx: 2015-02-18 14:31:55
   endx: 2015-02-18 14:31:55
   startingbid: 1
+  bid_amount: 10
   art_id: starry_night

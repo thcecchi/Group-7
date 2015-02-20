@@ -10,9 +10,11 @@ class BidsController < ApplicationController
 
   def create
     @bid = Bid.create bid_params
-    Pusher["auction-#{@bid.auction.id}"].trigger('bid_received', { amount: @bid.amount, bidder: @bid.bidder })
+    @auction = @bid.auction
+    @art = @auction.art
+    # Pusher["auction-#{@bid.auction.id}"].trigger('bid_received', { amount: @bid.amount, bidder: @bid.bidder })
     respond_to do |format|
-      format.json { render json: @bid.to_json } 
+      format.json { render 'shared/auction' }
       format.html 
     end
   end

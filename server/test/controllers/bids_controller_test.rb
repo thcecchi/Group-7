@@ -26,6 +26,18 @@ class BidsControllerTest < ActionController::TestCase
     end
 
     assert_equal response.code, '200'
+
+    j_resp = JSON.parse(response.body)
+
+    refute_nil j_resp['id']
+    refute_nil j_resp['title']
+    refute_nil j_resp['description']
+    refute_nil j_resp['dimensions']
+    refute_nil j_resp['artist']
+    refute_nil j_resp['endTime']
+    refute_nil j_resp['bidAmount']
+    refute_nil j_resp['mostRecentBidder']
+    refute_nil j_resp['latestBidAmount']
   end
 
   test '#update' do

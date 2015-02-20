@@ -17,7 +17,8 @@ class AuctionsControllerTest < ActionController::TestCase
     auction_attributes = {
       startx: Time.now.to_s,
       endx: (Time.now + 1.hour).to_s,
-      starting_bid: 1000,
+      bid_amount: 10,
+      startingbid: 1000,
       art_id: Art.first.id
     }
 
@@ -26,6 +27,18 @@ class AuctionsControllerTest < ActionController::TestCase
     end
 
     assert_equal response.code, '200'
+
+    j_resp = JSON.parse(response.body)
+
+    refute_nil j_resp['id']
+    refute_nil j_resp['title']
+    refute_nil j_resp['description']
+    refute_nil j_resp['dimensions']
+    refute_nil j_resp['artist']
+    refute_nil j_resp['endTime']
+    refute_nil j_resp['bidAmount']
+    refute_nil j_resp['mostRecentBidder']
+    refute_nil j_resp['latestBidAmount']
   end
 
   test '#update' do

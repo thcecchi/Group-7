@@ -2,15 +2,22 @@
 
 var ArtView = Backbone.View.extend({
   template: _.template(template.homeItem),
-  tagName: 'div class="col-md-3"',
+  tagName: 'article',
   initialize: function () {
     console.log(this.el)
   },
   events: {
-    'mouseover .col-md-3': 'showInfo'
+    'mouseover article': 'showInfo',
+    'click article': 'showBidView',
+    'click .deleteItem': 'removeListing',
+    'click .bidItem': 'bidOnListing'
   },
   showInfo: function () {
-    this.$el.find('.INFO').show();
+    this.$el.find('.backImg').hide();
+  },
+  showBidView: function ()  {
+    this.$el.find('.bidView').toggleClass('show')
+    this.$el.find('.tinyView').toggleClass('hide')
   },
   render: function () {
     console.log(this.el);
@@ -25,13 +32,14 @@ var ArtView = Backbone.View.extend({
   },
   bidOnListing: function (e) {
     e.preventDefault()
-    this.model.set({
-      amount: $('#newProduct').find('input[name="bidAmount"]').val(),
-      title: this.title,
-      bidder: localHost.localUser,
+    var newBid = {
+      bidAmount: this.$el.find('.bidAmount').attr('ref'),
+      title: this.$el.find('.title').attr('ref'),
+      bidder: localStorage.name,
       time: moment()
-    })
-    this.model.save();
+    }
+    var newModelBid = new BidModel(newBid)
+    newModelBid.save();
   }
 });
 
@@ -48,25 +56,27 @@ var AppView = Backbone.View.extend({
     'click #addButton': 'toggleForm'
   },
   toggleForm: function (event) {
-    event.preventDefault();
-    $('#newProduct').toggleClass('show'); //This works in the console, but for some reason I cannot get the click above in events to bind to the toggleForm function. We also may not want to use jQuery here, it can be swapped back to the original way, that is all I could get to work in the console though.
+    this.$el.find('#newProduct').toggleClass('show');
+    console.log('shown')
+
   },
   createListing: function (e) {
     e.preventDefault();
     var newListing = {
       title: $('#newProduct').find('input[name="newTitle"]').val(),
       description: $('#newProduct').find('input[name="newDescription"]').val(),
-      artist: $('#newProduct').find('textarea[name="newArtist"]').val(),
+      artist: $('#newProduct').find('input[name="newArtist"]').val(),
       image: $('#newProduct').find('input[name="newImage"]').val(),
       dimensions: $('#newProduct').find('input[name="newDimensions"]').val(),
       startingbid: $('#newProduct').find('input[name="newStartingBid"]').val(),
+      bidAmount: $('#newProduct').find('input[name="bidAmount"]').val(),
       endx: moment().hours($('#newProduct').find('input[name="newEndx"]').val()),
     };
 
     var newAuction = {
       startx: moment(),
       endx: moment().hours($('#newProduct').find('input[name="newEndx"]').val()),
-      amount: $('#newProduct').find('input[name="newAmount"]').val(),
+      bidAmount: $('#newProduct').find('input[name="bidAmount"]').val(),
       startingbid: $('#newProduct').find('input[name="newStartingBid"]').val()
     };
 
@@ -76,14 +86,12 @@ var AppView = Backbone.View.extend({
     this.collection.add(newModelArt)
 
     // create auction object
-    var newModelAuction = new AuctionModel(newPost)
+    var newModelAuction = new AuctionModel(newAuction)
     newModelAuction.save();
-    //
-    this.$el.find('div class="col-md-3"').remove();
-    this.addAllListings();
-    // this.addOnePost(newModelPost); // alternative method
+
+    this.addOneListing(newModelArt); // alternative method
     this.$el.find('#newProduct').find('input', 'textarea').val('');
-    this.showCreate();
+    this.toggleForm();
   },
   addOneListing: function (listing, idx, arr) {
     var artView = new ArtView({model: listing})
@@ -92,4 +100,12 @@ var AppView = Backbone.View.extend({
   addAllListings: function () {
     _.each(this.collection.models, this.addOneListing, this)
   }
+});
+
+//Clock view
+
+var clock = new FlipClock($('.your-clock'), {
+
+  // clock.setCountdown(true);
+  // clock.setTime(3600);
 });

@@ -1,4 +1,4 @@
 var ArtCollection = Backbone.Collection.extend({
-  url: 'http://tiy-fee-rest.herokuapp.com/collections/tylerbb7',
+  url: 'http://localhost:9000/arts',
   model: ArtModel
 })

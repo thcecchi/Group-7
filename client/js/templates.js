@@ -3,10 +3,10 @@ var template = {};
 template.homeItem = [
   '<article class="tinyView col-md-3">',
   '<div class="backimg" style="background-image: url(<%= image %>)">',
-  '<h3 class="INFO"><%= artist %></h3>',
-  '<h3 class="INFO"><%= title %></h3>',
-  '<h3 class="INFO"><%= startingbid %></h3>',
   '</div>',
+  '<h3 class="INFO line1"><%= artist %></h3>',
+  '<h3 class="INFO line2 "><%= title %></h3>',
+  '<h3 class="INFO line3"><%= startingbid %></h3>',
   '</article>',
   '<article class="bidView col-md-8 col-md-offset-2">',
   '<h2><%= title %></h2>',

@@ -38,4 +38,33 @@ h3, h1 {
   height: 200px;
   margin: 10%;
   background-repeat: no-repeat;
-  background-size: cover; }
+  background-size: cover;
+  padding-top: 10%;
+  color: white;
+  position: relative; }
+
+div.backimg:hover {
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -ms-filter: blur(5px);
+  -o-filter: blur(5px);
+  -moz-box-shadow: 0 0 10px #ccc;
+  -webkit-box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 0 10px #ccc; }
+
+.INFO {
+  position: absolute;
+  color: white; }
+
+.line1 {
+  top: 10%;
+  left: 25%; }
+
+.line2 {
+  top: 20%;
+  left: 25%; }
+
+.line3 {
+  top: 30%;
+  left: 25%; }

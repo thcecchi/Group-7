@@ -7,9 +7,9 @@ var ArtView = Backbone.View.extend({
     console.log(this.el)
   },
   events: {
-    'mouseover article': 'showInfo',
+    'mouseover .backimg': 'showInfo',
     'mouseout article': 'hideInfo',
-    'click article': 'showBidView',
+    'click .backimg': 'showBidView',
     'click .deleteItem': 'removeListing'
   },
   showInfo: function () {
@@ -30,8 +30,9 @@ var ArtView = Backbone.View.extend({
     return this;
   },
   removeListing: function () {
-    this.model.destroy();
+    this.model.destroy()
     this.$el.remove()
+    $('.tinyView').toggleClass('hide')
   },
   bidOnListing: function (e) {
     e.preventDefault()

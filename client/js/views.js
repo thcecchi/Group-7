@@ -7,17 +7,26 @@ var ArtView = Backbone.View.extend({
     console.log(this.el)
   },
   events: {
-    'mouseover article': 'showInfo',
-    'click article': 'showBidView',
+    'mouseover .backimg': 'showInfo',
+    'mouseout article': 'hideInfo',
+    'click .backimg': 'showBidView',
     'click .deleteItem': 'removeListing',
+    'click .bidView img': 'showTinyView',
     'click .bidItem': 'bidOnListing'
   },
   showInfo: function () {
-    this.$el.find('.backImg').hide();
+    this.$el.find('.INFO').show();
+  },
+  hideInfo: function () {
+    this.$el.find('.INFO').hide();
   },
   showBidView: function ()  {
     this.$el.find('.bidView').toggleClass('show')
-    this.$el.find('.tinyView').toggleClass('hide')
+    $('.tinyView').toggleClass('hide')
+  },
+  showTinyView: function () {
+    this.$el.find('.bidView').toggleClass('show')
+    $('.tinyView').toggleClass('hide')
   },
   render: function () {
     console.log(this.el);
@@ -29,6 +38,7 @@ var ArtView = Backbone.View.extend({
   removeListing: function () {
     this.model.destroy();
     this.$el.remove();
+    $('.tinyView').toggleClass('hide')
     // setInterval(this.countdown, 200);
     // if this.timeLeft == 0 {
     //   this.$el.remove();
@@ -110,12 +120,4 @@ var AppView = Backbone.View.extend({
   addAllListings: function (listing) {
     _.each(this.collection.models, this.addOneListing, this)
   }
-});
-
-//Clock view
-
-var clock = new FlipClock($('.your-clock'), {
-
-  // clock.setCountdown(true);
-  // clock.setTime(3600);
 });

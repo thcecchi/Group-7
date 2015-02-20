@@ -4,22 +4,57 @@ body {
 #newProduct {
   display: none; }
 
-.hide {
+.hide, .INFO {
   display: none; }
 
 .show {
   display: block; }
 
-.bidView {
-  display: none; }
-
 h3, h1 {
   text-align: center;
   margin: 5%; }
+
+.bidView {
+  display: none; }
+
+.bidView img {
+  width: 60%; }
+
+.bid-info {
+  width: 35%;
+  float: right; }
+
+.bidView h3, .bidView p {
+  text-align: right;
+  margin: 0;
+  padding: 5%; }
+
+.deleteItem {
+  float: right;
+  margin: 5%; }
+
+.tinyView {
+  position: relative; }
 
 .backimg {
   width: 80%;
   height: 200px;
   margin: 10%;
   background-repeat: no-repeat;
-  background-size: cover; }
+  background-size: cover;
+  padding-top: 10%;
+  color: white; }
+
+.backimg:hover {
+  /*   filter: blur(5px);
+-webkit-filter: blur(5px);
+-moz-filter: blur(5px);
+-ms-filter: blur(5px);
+-o-filter: blur(5px); */
+  -moz-box-shadow: 0 0 10px #ccc;
+  -webkit-box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 0 10px #ccc; }
+
+.INFO {
+  position: relative;
+  color: white; }

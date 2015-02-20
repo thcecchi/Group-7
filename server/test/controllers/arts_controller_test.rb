@@ -22,7 +22,8 @@ class ArtsControllerTest < ActionController::TestCase
         title: 'The Red Pony',
         description: 'It has a red pony!',
         artist: 'Adam',
-        dimensions: '1in x 30in'
+        dimensions: '1in x 30in',
+        image_url: 'http://www.online-image-editor.com//styles/2014/images/example_image.png'
     }
 
     assert_difference 'Art.count' do
@@ -30,6 +31,14 @@ class ArtsControllerTest < ActionController::TestCase
     end
 
     assert_equal response.code, '200'
+
+    last_art = Art.last
+
+    assert_equal last_art.title, 'The Red Pony'
+    assert_equal last_art.description, 'It has a red pony!'
+    assert_equal last_art.artist, 'Adam'
+    assert_equal last_art.dimensions, '1in x 30in'
+    assert_equal last_art.image_url, 'http://www.online-image-editor.com//styles/2014/images/example_image.png'
   end
 
   test '#update' do

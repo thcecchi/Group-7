@@ -28,7 +28,12 @@ var ArtView = Backbone.View.extend({
   },
   removeListing: function () {
     this.model.destroy();
-    this.$el.remove()
+    this.$el.remove();
+    // setInterval(this.countdown, 200);
+    // if this.timeLeft == 0 {
+    //   this.$el.remove();
+    // }
+
   },
   bidOnListing: function (e) {
     e.preventDefault()

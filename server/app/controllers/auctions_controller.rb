@@ -10,8 +10,7 @@ class AuctionsController < ApplicationController
 
 
   def create
-    @art = Art.create art_params
-    @auction = @art.auctions.create auction_params
+    @auction = Auction.create auction_params
     respond_to do |format|
       format.json { render json: @auction.to_json }
       format.html
@@ -44,17 +43,9 @@ class AuctionsController < ApplicationController
     params.require(:auction).permit(
       :startx,
       :endx,
-      :startingbid
+      :startingbid,
+      :art_id
       )
-  end
-
-  def art_params
-    params.require(:art).permit(
-      :title,
-      :description,
-      :artist,
-      :dimensions
-    )
   end
 end
 

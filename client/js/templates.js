@@ -13,7 +13,7 @@ template.homeItem = [
   '<img src="<%= image %>">',
   '<div class="bid-info">',
   '<div class="your-clock"></div>',
-  '<button class="btn btn-default"><i class="fa fa-hand-o-up"></i> Bid</button>',
+  '<button class="bidItem btn btn-default"><i class="fa fa-hand-o-up"></i> Bid</button>',
   '<h3><%= artist %></h3>',
   // '<h3><%= startingbid %></h3>',
   '<h3 class="bidAmount" ref="<%= bidAmount %>"><%= bidAmount %></h3>',

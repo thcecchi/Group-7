@@ -60,12 +60,11 @@ h3, h1 {
 }
 
 .backimg:hover {
-
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -ms-filter: blur(5px);
-  -o-filter: blur(5px);
+/*   filter: blur(5px);
+-webkit-filter: blur(5px);
+-moz-filter: blur(5px);
+-ms-filter: blur(5px);
+-o-filter: blur(5px); */
   -moz-box-shadow: 0 0 10px #ccc;
   -webkit-box-shadow: 0 0 10px #ccc;
   box-shadow: 0 0 10px #ccc;

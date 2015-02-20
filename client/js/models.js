@@ -1,6 +1,7 @@
 //Art model
 
 var ArtModel = Backbone.Model.extend({
+
   urlRoot: 'http://tiy-fee-rest.herokuapp.com/collections/nocommtest',
   url: 'http://tiy-fee-rest.herokuapp.com/collections/nocommtest',
   idAttribute: '_id',
@@ -23,6 +24,7 @@ var ArtModel = Backbone.Model.extend({
 //Auction model
 
 var AuctionModel = Backbone.Model.extend({
+
   urlRoot: 'http://tiy-fee-rest.herokuapp.com/collections/nocommtest',
   idAttribute: '_id',
   defaults: function () {
@@ -41,6 +43,7 @@ var AuctionModel = Backbone.Model.extend({
 //Bid model
 
 var BidModel = Backbone.Model.extend({
+
   urlRoot: 'http://tiy-fee-rest.herokuapp.com/collections/nocommtest',
   idAttribute: '_id',
   defaults: function () {

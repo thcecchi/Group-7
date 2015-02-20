@@ -92,45 +92,12 @@ var AppView = Backbone.View.extend({
       endx: moment().hours($('#newProduct').find('input[name="newEndx"]').val()),
     };
 
-    // // create art object
+    // create art object
     var newModelArt = new ArtModel(newListing)
     newModelArt.save();
     var artid = newModelArt.get("_id");
     newModelArt.attributes._id = artid;
     this.collection.add(newModelArt)
-
-
-    // var newListing = {
-    //   title: $('#newProduct').find('input[name="newTitle"]').val(),
-    //   description: $('#newProduct').find('input[name="newDescription"]').val(),
-    //   artist: $('#newProduct').find('input[name="newArtist"]').val(),
-    //   image: $('#newProduct').find('input[name="newImage"]').val(),
-    //   dimensions: $('#newProduct').find('input[name="newDimensions"]').val(),
-    //   startingbid: $('#newProduct').find('input[name="newStartingBid"]').val(),
-    //   bidAmount: $('#newProduct').find('input[name="bidAmount"]').val(),
-    //   endx: moment().hours($('#newProduct').find('input[name="newEndx"]').val()),
-    // };
-    //
-    // var newModelArt = new ArtModel(newListing);
-    //
-    // var newAuction = {
-    //   art: newModelArt,
-    //   title: $('#newProduct').find('input[name="newTitle"]').val(),
-    //   startx: moment(),
-    //   endx: moment().hours($('#newProduct').find('input[name="newEndx"]').val()),
-    //   bidAmount: $('#newProduct').find('input[name="bidAmount"]').val(),
-    //   startingbid: $('#newProduct').find('input[name="newStartingBid"]').val()
-    // };
-    //
-    // // create art object
-    // newModelArt.save();
-    // var artid = newModelArt.get("_id");
-    // newModelArt.attributes._id = artid;
-    // this.collection.add(newModelArt)
-    //
-    // // create auction object
-    // var newModelAuction = new AuctionModel(newAuction)
-    // newModelAuction.save();
 
     this.addOneListing(newModelArt); // alternative method
     this.$el.find('#newProduct').find('input', 'textarea').val('');

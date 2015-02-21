@@ -28,7 +28,7 @@ var ArtView = Backbone.View.extend({
   },
   startCountdown: function () {
     //Clock view
-    var bidTime = 20;
+    var bidTime = 90;
     var self = this;
 
     var clock = $('.your-clock').FlipClock({

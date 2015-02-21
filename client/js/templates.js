@@ -10,7 +10,7 @@ template.homeItem = [
   '</article>',
   '<article class="bidView col-md-8 col-md-offset-2">',
   '<h2><%= title %></h2>',
-  '<img src="<%= image_url %>">',
+  '<img class="fullbackimg" src="<%= image_url %>">',
   '<div class="bid-info">',
   '<div class="your-clock"></div>',
   '<button class="bidItem btn btn-default"><i class="fa fa-hand-o-up"></i> Bid</button>',
@@ -19,7 +19,7 @@ template.homeItem = [
   '<h3 class="bidAmount" ref="<%= bidAmount %>"><%= bidAmount %></h3>',
   '<p><%= description %></p>',
   '<p><%= dimensions %></p>',
-  '<button class="deleteItem btn btn-default btn-xs">Delete Item</button>',
+  '<button class="deleteItem btn btn-default btn-sm">Delete Item</button>',
   '</div>',
   '</article>'
 ].join("");

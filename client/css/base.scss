@@ -1,7 +1,8 @@
-$background: #D8DAD9;
+$font: 'Special Elite', cursive;
 
 body {
-  background-color: $background;
+  background: url("../brickwall_@2X.png");
+  font-family: $font;
 }
 
 .loginContainer {
@@ -51,6 +52,7 @@ body {
 h3, h1 {
   text-align: center;
   margin: 5%;
+  color: black;
 }
 
 .bidView {
@@ -77,6 +79,13 @@ h3, h1 {
   margin: 5%;
 }
 
+.bidItem {
+  float: right;
+  margin-left: 100%;
+  margin-bottom: 5%;
+  margin-right: 5%;
+}
+
 .tinyView {
   position: relative;
 }
@@ -89,17 +98,15 @@ h3, h1 {
   background-size: cover;
   padding-top: 10%;
   color: white;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
-.backimg:hover {
-/*   filter: blur(5px);
--webkit-filter: blur(5px);
--moz-filter: blur(5px);
--ms-filter: blur(5px);
--o-filter: blur(5px); */
-  -moz-box-shadow: 0 0 10px #ccc;
-  -webkit-box-shadow: 0 0 10px #ccc;
-  box-shadow: 0 0 10px #ccc;
+.fullbackimg {
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 
 .INFO {
@@ -107,6 +114,11 @@ h3, h1 {
   color: white;
 }
 
+
 section {
   display: none;
+}
+
+div.your-clock {
+  margin-left: 5%;
 }

@@ -9,6 +9,7 @@ class BidsController < ApplicationController
   end
 
   def create
+    params[:auction_id] = params[:artId]
     @bid = Bid.create bid_params
     @auction = @bid.auction
     @art = @auction.art

@@ -136,12 +136,17 @@ var AppView = Backbone.View.extend({
 
     // create art object
     var newModelArt = new ArtModel(newListing)
-    newModelArt.save();
+    var artPromise = newModelArt.save();
     var artid = newModelArt.get("id");
     newModelArt.attributes.id = artid;
     this.collection.add(newModelArt)
+    var self = this
+    $.when(artPromise).then(function(val) {
+      console.log(val)
+      self.addOneListing(newModelArt); // alternative method
 
-    this.addOneListing(newModelArt); // alternative method
+    })
+
     this.$el.find('#newProduct').find('input', 'textarea').val('');
     this.toggleForm();
 

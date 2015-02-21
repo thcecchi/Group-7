@@ -10,7 +10,7 @@ template.homeItem = [
   '</article>',
   '<article class="bidView col-md-8 col-md-offset-2">',
   '<h2><%= title %></h2>',
-  '<img src="<%= image %>">',
+  '<img class="fullbackimg" src="<%= image %>">',
   '<div class="bid-info">',
   '<div class="your-clock"></div>',
   '<button class="bidItem btn btn-default"><i class="fa fa-hand-o-up"></i> Bid</button>',

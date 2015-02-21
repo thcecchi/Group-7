@@ -1,5 +1,5 @@
 body {
-  background-color: #D8DAD9; }
+  background: url("../brickwall_@2X.png"); }
 
 #newProduct {
   display: none; }
@@ -12,7 +12,8 @@ body {
 
 h3, h1 {
   text-align: center;
-  margin: 5%; }
+  margin: 5%;
+  color: #690100; }
 
 .bidView {
   display: none; }
@@ -43,17 +44,15 @@ h3, h1 {
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 10%;
-  color: white; }
+  color: white;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75); }
 
-.backimg:hover {
-  /*   filter: blur(5px);
--webkit-filter: blur(5px);
--moz-filter: blur(5px);
--ms-filter: blur(5px);
--o-filter: blur(5px); */
-  -moz-box-shadow: 0 0 10px #ccc;
-  -webkit-box-shadow: 0 0 10px #ccc;
-  box-shadow: 0 0 10px #ccc; }
+.fullbackimg {
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75); }
 
 .INFO {
   position: relative;

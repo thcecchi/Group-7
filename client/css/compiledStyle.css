@@ -64,3 +64,6 @@ h3, h1 {
 .INFO {
   position: relative;
   color: white; }
+
+div.your-clock {
+  margin-left: 5%; }

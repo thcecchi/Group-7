@@ -1,4 +1,4 @@
-json.(@art, :id, :title, :description, :dimensions, :artist)
+json.(@art, :title, :description, :dimensions, :artist)
 
 json.endTime @auction.endx
 json.bidAmount @auction.bid_amount

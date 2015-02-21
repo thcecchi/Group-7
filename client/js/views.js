@@ -56,7 +56,6 @@ var ArtView = Backbone.View.extend({
 
   },
   removeListing: function () {
-    this.model.destroy();
     this.$el.remove();
     $('.tinyView').toggleClass('hide')
   },
@@ -67,11 +66,12 @@ var ArtView = Backbone.View.extend({
       title: this.$el.find('.title').attr('ref'),
       bidder: localStorage.name,
       time: moment(),
-      art: this.$el.find('article').eq(0).data('artid')
+      artId: this.$el.find('article').eq(0).data('artid')
     }
     console.log(this.el)
     var newModelBid = new BidModel(newBid)
     newModelBid.save();
+    console.log(this.$el.find('article').eq(0).data('artid'))
   }
 });
 
@@ -137,15 +137,13 @@ var AppView = Backbone.View.extend({
     // create art object
     var newModelArt = new ArtModel(newListing)
     newModelArt.save();
-    var artid = newModelArt.get("_id");
-    newModelArt.attributes._id = artid;
+    var artid = newModelArt.get("id");
+    newModelArt.attributes.id = artid;
     this.collection.add(newModelArt)
 
     this.addOneListing(newModelArt); // alternative method
     this.$el.find('#newProduct').find('input', 'textarea').val('');
     this.toggleForm();
-
-    this.startCountdown();
 
   },
   addOneListing: function (listing, idx, arr) {

@@ -28,7 +28,7 @@ var ArtView = Backbone.View.extend({
   },
   startCountdown: function () {
     //Clock view
-    var bidTime = 20;
+    var bidTime = 90;
     var self = this;
 
     var clock = $('.your-clock').FlipClock({
@@ -127,7 +127,7 @@ var AppView = Backbone.View.extend({
       title: $('#newProduct').find('input[name="newTitle"]').val(),
       description: $('#newProduct').find('input[name="newDescription"]').val(),
       artist: $('#newProduct').find('input[name="newArtist"]').val(),
-      image: $('#newProduct').find('input[name="newImage"]').val(),
+      image_url: $('#newProduct').find('input[name="newImage"]').val(),
       dimensions: $('#newProduct').find('input[name="newDimensions"]').val(),
       startingbid: $('#newProduct').find('input[name="newStartingBid"]').val(),
       bidAmount: $('#newProduct').find('input[name="bidAmount"]').val(),

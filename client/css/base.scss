@@ -1,8 +1,8 @@
-$background: #B7C4B5;
-$headings: #690100;
+$font: 'Special Elite', cursive;
 
 body {
-  background: url("../brickwall_@2X.png")
+  background: url("../brickwall_@2X.png");
+  font-family: $font;
 }
 
 #newProduct {
@@ -20,7 +20,7 @@ body {
 h3, h1 {
   text-align: center;
   margin: 5%;
-  color: $headings;
+  color: black;
 }
 
 .bidView {
@@ -45,6 +45,13 @@ h3, h1 {
 .deleteItem {
   float: right;
   margin: 5%;
+}
+
+.bidItem {
+  float: right;
+  margin-left: 100%;
+  margin-bottom: 5%;
+  margin-right: 5%;
 }
 
 .tinyView {

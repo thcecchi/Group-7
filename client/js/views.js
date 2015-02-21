@@ -23,6 +23,25 @@ var ArtView = Backbone.View.extend({
   showBidView: function ()  {
     this.$el.find('.bidView').toggleClass('show')
     $('.tinyView').toggleClass('hide')
+
+    this.startCountdown();
+  },
+  startCountdown: function () {
+    //Clock view
+    var bidTime = 20;
+    var self = this;
+
+    var clock = $('.your-clock').FlipClock({
+      countdown: true,
+      clockFace: 'MinuteCounter',
+      callbacks: {
+        stop: function() {
+          self.removeListing()
+        }
+      }
+    });
+    clock.setTime(bidTime);
+    clock.start();
   },
   showTinyView: function () {
     this.$el.find('.bidView').toggleClass('show')
@@ -34,16 +53,12 @@ var ArtView = Backbone.View.extend({
     this.$el.html(markup)
 
     return this;
+
   },
   removeListing: function () {
     this.model.destroy();
     this.$el.remove();
     $('.tinyView').toggleClass('hide')
-    // setInterval(this.countdown, 200);
-    // if this.timeLeft == 0 {
-    //   this.$el.remove();
-    // }
-
   },
   bidOnListing: function (e) {
     e.preventDefault()
@@ -77,6 +92,23 @@ var AppView = Backbone.View.extend({
     console.log('shown')
 
   },
+  // startCountdown: function () {
+  //   //Clock view
+  //   var bidTime = 20;
+  //
+  //   var clock = $('.your-clock').FlipClock({
+  //     countdown: true,
+  //     clockFace: 'MinuteCounter',
+  //     callbacks: {
+  //       stop: function() {
+  //         this.model.destroy();
+  //         this.$el.remove();
+  //       }
+  //     }
+  //   });
+  //   clock.setTime(bidTime);
+  //   clock.start();
+  // },
   createListing: function (e) {
     e.preventDefault();
     var newAuction = {
@@ -112,12 +144,16 @@ var AppView = Backbone.View.extend({
     this.addOneListing(newModelArt); // alternative method
     this.$el.find('#newProduct').find('input', 'textarea').val('');
     this.toggleForm();
+
+    this.startCountdown();
+
   },
   addOneListing: function (listing, idx, arr) {
     var artView = new ArtView({model: listing})
       this.$el.append(artView.render().el)
   },
-  addAllListings: function (listing) {
+  addAllListings: function () {
     _.each(this.collection.models, this.addOneListing, this)
+
   }
 });

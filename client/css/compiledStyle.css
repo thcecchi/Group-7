@@ -1,6 +1,32 @@
 body {
   background-color: #D8DAD9; }
 
+.loginContainer {
+  margin-top: 10%;
+  display: block;
+  background: crimson;
+  padding: 5%;
+  color: ghostwhite;
+  border-radius: 5%; }
+  .loginContainer input {
+    color: dodgerblue;
+    font-weight: bold;
+    font-size: 2em;
+    border: none;
+    height: 50px; }
+  .loginContainer button {
+    background: ghostwhite;
+    color: dodgerblue;
+    border-radius: 5%;
+    border: 3px solid dodgerblue;
+    font-weight: bold;
+    margin-top: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%; }
+
+.header {
+  display: none; }
+
 #newProduct {
   display: none; }
 
@@ -58,3 +84,6 @@ h3, h1 {
 .INFO {
   position: relative;
   color: white; }
+
+section {
+  display: none; }

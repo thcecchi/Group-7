@@ -26,7 +26,7 @@ var ArtModel = Backbone.Model.extend({
 
 var AuctionModel = Backbone.Model.extend({
 
-  urlRoot: 'http://localhost:9000/arts',
+  urlRoot: 'http://localhost:9000/auctions',
   idAttribute: 'id',
   defaults: function () {
     return {
@@ -45,7 +45,7 @@ var AuctionModel = Backbone.Model.extend({
 
 var BidModel = Backbone.Model.extend({
 
-  urlRoot: 'http://localhost:9000/arts',
+  urlRoot: 'http://localhost:9000/bids',
   idAttribute: 'id',
   defaults: function () {
     return {
@@ -53,7 +53,7 @@ var BidModel = Backbone.Model.extend({
       title: "generic title",
       bidder: "generic name",
       time: moment(),
-      art: "generic id"
+      artId: "generic id"
     };
   },
   initialize: function () {

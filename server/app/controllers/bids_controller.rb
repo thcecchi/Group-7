@@ -3,8 +3,8 @@ class BidsController < ApplicationController
   def index
     @bids = Bid.all
     respond_to do |format|
-      format.json { render json: @bids.to_json } 
-      format.html 
+      format.json { render json: @bids.to_json }
+      format.html
     end
   end
 
@@ -16,16 +16,16 @@ class BidsController < ApplicationController
     # Pusher["auction-#{@bid.auction.id}"].trigger('bid_received', { amount: @bid.amount, bidder: @bid.bidder })
     respond_to do |format|
       format.json { render 'shared/auction' }
-      format.html 
+      format.html
     end
   end
 
-  def update 
+  def update
     @bid = Bid.find params[:id]
     @bid.update_attributes bid_params
     respond_to do |format|
-      format.json { render json: @bid.to_json } 
-      format.html 
+      format.json { render json: @bid.to_json }
+      format.html
     end
   end
 
@@ -33,12 +33,12 @@ class BidsController < ApplicationController
     @bid = Bid.find params[:id]
     @bid.destroy
     respond_to do |format|
-      format.json { render nothing: true } 
-      format.html 
+      format.json { render nothing: true }
+      format.html
     end
   end
 
-private 
+private
 
   def bid_params
     params.require(:bid).permit(
@@ -48,5 +48,3 @@ private
     )
   end
 end
-
-

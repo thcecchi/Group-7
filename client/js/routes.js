@@ -7,28 +7,23 @@ var AppRouter = Backbone.Router.extend({
     'gallery': 'gallery',
     'art/:id': 'artbid'
   },
-  home: function() {
+  gallery: function() {
     var self = this;
-    var people = new StudentCollection();
+    var art = new ArtCollection();
     people.fetch().then(function() {
-     self.loadView(new StudentsView({collection: people}));
+     self.loadView(new appView({collection: art}));
     });
   },
-  testRoute: function() {
-    this.loadView(new testView());
-    this.view.render();
-
-  },
-  spooner: function() {
+  artbid: function() {
     var self = this;
-    var people = new StudentCollection();
+    var art = new ArtModel();
 
     people.fetch({data: $.param({limit: 2})}).then(function() {
-     self.loadView(new StudentsView({collection: people}));
+     self.loadView(new appView({collection: artCollection}));
     });
   },
   addStudent: function() {
-    this.loadView(new AddStudentView());
+    this.loadView(new addOneListing());
   },
   loadView: function(view) {
     this.view && this.view.remove();

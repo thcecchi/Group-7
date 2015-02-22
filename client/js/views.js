@@ -5,6 +5,7 @@ var ArtView = Backbone.View.extend({
   tagName: 'article',
   initialize: function () {
     console.log(this.el)
+
   },
   events: {
     'mouseover .backimg': 'showInfo',
@@ -12,10 +13,11 @@ var ArtView = Backbone.View.extend({
     'click .backimg': 'showBidView',
     'click .deleteItem': 'removeListing',
     'click .bidView img': 'showTinyView',
-    'click .bidItem': 'bidOnListing'
+    'click .bidItem': 'bidOnListing',
   },
   showInfo: function () {
     this.$el.find('.INFO').show();
+    console.log(this)
   },
   hideInfo: function () {
     this.$el.find('.INFO').hide();
@@ -24,11 +26,12 @@ var ArtView = Backbone.View.extend({
     this.$el.find('.bidView').toggleClass('show')
     $('.tinyView').toggleClass('hide')
 
-    this.startCountdown();
+    this.startCountdown()
+
   },
   startCountdown: function () {
     //Clock view
-    var bidTime = 90;
+    var bidTime = this.model.attributes.endx;
     var self = this;
 
     var clock = $('.your-clock').FlipClock({
@@ -95,7 +98,6 @@ var AppView = Backbone.View.extend({
   toggleForm: function (event) {
     this.$el.find('#newProduct').toggleClass('show');
     console.log('shown')
-
   },
 
   createListing: function (e) {
@@ -120,21 +122,29 @@ var AppView = Backbone.View.extend({
       dimensions: $('#newProduct').find('input[name="newDimensions"]').val(),
       startingbid: $('#newProduct').find('input[name="newStartingBid"]').val(),
       amount: $('#newProduct').find('input[name="bidAmount"]').val(),
-      endx: moment().hours($('#newProduct').find('input[name="newEndx"]').val()),
+      endx: $( ".newEndx option:selected" ).attr('ref'),
     };
+
+    var endTime = $( ".newEndx option:selected" ).attr('ref')
+    console.log(endTime)
 
     // create art object
     var newModelArt = new ArtModel(newListing)
     var artPromise = newModelArt.save();
-    var artid = newModelArt.get("id");
-    newModelArt.attributes.id = artid;
+    // var artid = newModelArt.get("id");
+    // newModelArt.attributes.id = artid;
     this.collection.add(newModelArt)
     var self = this
     $.when(artPromise).then(function(val) {
       console.log(val)
+      var artid = newModelArt.get("id");
+      newModelArt.attributes.id = artid;
+      newModelAuction.save();
       self.addOneListing(newModelArt); // alternative method
-
     })
+
+    // create auction
+    // newModelAuction.save();
 
     this.$el.find('#newProduct').find('input', 'textarea').val('');
     this.toggleForm();

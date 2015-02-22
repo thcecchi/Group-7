@@ -3,7 +3,7 @@
 var ArtModel = Backbone.Model.extend({
 
   urlRoot: 'http://localhost:9000/arts',
-  url: 'http://localhost:9000/arts',
+  // url: 'http://localhost:9000/arts',
   idAttribute: 'id',
   defaults: function () {
     return {

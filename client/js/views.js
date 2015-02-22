@@ -59,19 +59,23 @@ var ArtView = Backbone.View.extend({
     this.model.destroy();
     this.$el.remove();
     $('.tinyView').toggleClass('hide')
+    console.log('delete sent to server!')
   },
   bidOnListing: function (e) {
     e.preventDefault()
     var newBid = {
-      bidAmount: this.$el.find('.bidAmount').attr('ref'),
+      amount: this.$el.find('.bidAmount').attr('ref'),
       title: this.$el.find('.title').attr('ref'),
       bidder: localStorage.name,
       time: moment(),
-      artId: this.$el.find('article').eq(0).data('artid')
+      auction_id: this.$el.find('article').eq(0).data('artid')
     }
     console.log(this.el)
     var newModelBid = new BidModel(newBid)
-    newModelBid.save();
+    var bidPromise = newModelBid.save();
+    $.when(bidPromise).then(function(val) {
+      console.log(val)
+    })
     console.log(this.$el.find('article').eq(0).data('artid'))
   }
 });
@@ -101,7 +105,7 @@ var AppView = Backbone.View.extend({
       title: $('#newProduct').find('input[name="newTitle"]').val(),
       startx: moment(),
       endx: moment().hours($('#newProduct').find('input[name="newEndx"]').val()),
-      bidAmount: $('#newProduct').find('input[name="bidAmount"]').val(),
+      amount: $('#newProduct').find('input[name="bidAmount"]').val(),
       startingbid: $('#newProduct').find('input[name="newStartingBid"]').val()
     };
 
@@ -115,7 +119,7 @@ var AppView = Backbone.View.extend({
       image_url: $('#newProduct').find('input[name="newImage"]').val(),
       dimensions: $('#newProduct').find('input[name="newDimensions"]').val(),
       startingbid: $('#newProduct').find('input[name="newStartingBid"]').val(),
-      bidAmount: $('#newProduct').find('input[name="bidAmount"]').val(),
+      amount: $('#newProduct').find('input[name="bidAmount"]').val(),
       endx: moment().hours($('#newProduct').find('input[name="newEndx"]').val()),
     };
 

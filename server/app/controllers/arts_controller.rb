@@ -4,7 +4,7 @@ class ArtsController < ApplicationController
     @arts = Art.all
     respond_to do |format|
       format.json { render json: @arts.to_json }
-      format.html 
+      format.html
     end
   end
 
@@ -12,16 +12,16 @@ class ArtsController < ApplicationController
     @art = Art.create art_params
     respond_to do |format|
       format.json { render json: @art.to_json }
-      format.html 
+      format.html
     end
   end
 
-  def update 
+  def update
     @art = Art.find params[:id]
     @art.update_attributes art_params
     respond_to do |format|
       format.json { render json: @art.to_json }
-      format.html 
+      format.html
     end
   end
 
@@ -29,12 +29,12 @@ class ArtsController < ApplicationController
     @art = Art.find params[:id]
     @art.destroy
     respond_to do |format|
-      format.json { render nothing: true } 
-      format.html 
+      format.json { render nothing: true }
+      format.html
     end
   end
 
-private 
+private
 
   def art_params
     params.require(:art).permit(

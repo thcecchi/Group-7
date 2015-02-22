@@ -56,6 +56,7 @@ var ArtView = Backbone.View.extend({
 
   },
   removeListing: function () {
+    this.model.destroy();
     this.$el.remove();
     $('.tinyView').toggleClass('hide')
   },
@@ -92,23 +93,7 @@ var AppView = Backbone.View.extend({
     console.log('shown')
 
   },
-  // startCountdown: function () {
-  //   //Clock view
-  //   var bidTime = 20;
-  //
-  //   var clock = $('.your-clock').FlipClock({
-  //     countdown: true,
-  //     clockFace: 'MinuteCounter',
-  //     callbacks: {
-  //       stop: function() {
-  //         this.model.destroy();
-  //         this.$el.remove();
-  //       }
-  //     }
-  //   });
-  //   clock.setTime(bidTime);
-  //   clock.start();
-  // },
+
   createListing: function (e) {
     e.preventDefault();
     var newAuction = {

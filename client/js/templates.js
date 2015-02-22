@@ -2,7 +2,7 @@ var template = {};
 
 template.homeItem = [
   '<article class="tinyView col-md-3" data-artid="<%= id %>">',
-  '<a href="#<%= title %>"><div class="backimg" style="background-image: url(<%= image_url %>)">',
+  '<a href="#art/<%= title %>"><div class="backimg" style="background-image: url(<%= image_url %>)">',
   '<h3 class="INFO"><%= artist %></h3>',
   '<h3 class="title INFO" ref="<%= title %>"><%= title %></h3>',
   // '<h3 class="INFO"><%= latestBidAmount %></h3>',
@@ -16,7 +16,7 @@ template.homeItem = [
   '<button class="bidItem btn btn-default"><i class="fa fa-hand-o-up"></i> Bid</button>',
   '<h3><%= artist %></h3>',
   // '<h3><%= startingbid %></h3>',
-  '<h3 class="bidAmount" ref="<%= bidAmount %>"><%= bidAmount %></h3>',
+  '<h3 class="bidAmount" ref="<%= amount %>"><%= amount %></h3>',
   '<p><%= description %></p>',
   '<p><%= dimensions %></p>',
   '<button class="deleteItem btn btn-default btn-sm">Delete Item</button>',

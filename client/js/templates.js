@@ -2,11 +2,11 @@ var template = {};
 
 template.homeItem = [
   '<article class="tinyView col-md-3" data-artid="<%= id %>">',
-  '<div class="backimg" style="background-image: url(<%= image_url %>)">',
+  '<a href="#<%= title %>"><div class="backimg" style="background-image: url(<%= image_url %>)">',
   '<h3 class="INFO"><%= artist %></h3>',
   '<h3 class="title INFO" ref="<%= title %>"><%= title %></h3>',
   // '<h3 class="INFO"><%= latestBidAmount %></h3>',
-  '</div>',
+  '</div></a>',
   '</article>',
   '<article class="bidView col-md-8 col-md-offset-2">',
   '<h2><%= title %></h2>',

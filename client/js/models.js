@@ -3,7 +3,7 @@
 var ArtModel = Backbone.Model.extend({
 
   urlRoot: 'http://localhost:9000/arts',
-  url: 'http://localhost:9000/arts',
+  // url: 'http://localhost:9000/arts',
   idAttribute: 'id',
   defaults: function () {
     return {
@@ -13,13 +13,16 @@ var ArtModel = Backbone.Model.extend({
       image_url: "http://www.fillmurray.com/200/200",
       dimensions: "generic dimensions",
       startingbid: "generic amount",
-      bidAmount: "generic amount",
+      amount: "generic amount",
       auction: ""
     };
   },
   initialize: function () {
     console.log('ArtModel was created');
   }
+  // toJSON: function() {
+  //   return {ArtModel: this.attributes};
+  // }
 })
 
 //Auction model
@@ -33,7 +36,7 @@ var AuctionModel = Backbone.Model.extend({
       startx: "generic time",
       endx: "generic time",
       startingbid: "generic amount",
-      bidAmount: "generic amount"
+      amount: "generic amount"
     };
   },
   initialize: function () {
@@ -49,11 +52,11 @@ var BidModel = Backbone.Model.extend({
   idAttribute: 'id',
   defaults: function () {
     return {
-      bidAmount: "generic amount",
+      amount: "generic amount",
       title: "generic title",
       bidder: "generic name",
       time: moment(),
-      artId: "generic id"
+      auction_id: "generic id"
     };
   },
   initialize: function () {

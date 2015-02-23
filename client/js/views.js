@@ -40,11 +40,23 @@ var ArtView = Backbone.View.extend({
       callbacks: {
         stop: function() {
           self.removeListing()
+          self.showWinner();
         }
       }
     });
     clock.setTime(bidTime);
     clock.start();
+  },
+  showWinner: function () {
+    var winnerTitle = this.model.attributes.title
+    if (this.model.attributes.bidder == localStorage.name) {
+      alert('you won your auction for ' + winnerTitle +' at a price of $' + this.model.attributes.total_amount)
+    }
+
+    else {
+      alert('you lost the auction for ' + winnerTitle + '. The winner was ' + this.model.attributes.bidder)
+
+    }
   },
   showTinyView: function () {
     this.$el.find('.bidView').toggleClass('show')
@@ -65,7 +77,7 @@ var ArtView = Backbone.View.extend({
     console.log('delete sent to server!')
   },
   bidOnListing: function (e) {
-    // e.preventDefault()
+    e.preventDefault()
 
     var bidsArr = this.model.attributes.bids
     bidsArr.push(this.model.attributes.bid_amount)
@@ -85,6 +97,9 @@ var ArtView = Backbone.View.extend({
 
     this.model.save();
 
+    // this.getBids();
+
+    // get bids
     var self = this
 
     var start = self.model.attributes.starting
@@ -103,23 +118,16 @@ var ArtView = Backbone.View.extend({
       $('.total_amount').text("Total: "+theTotal);
     });
 
-    $('.total_amount').text("Total: "+theTotal);
+    $('.total_amount').text("Total: $"+theTotal);
 
-    // var newBid = {
-    //   amount: this.$el.find('.bidAmount').attr('ref'),
-    //   title: this.$el.find('.title').attr('ref'),
-    //   bidder: localStorage.name,
-    //   time: moment(),
-    //   auction_id: this.$el.find('article').eq(0).data('artid')
-    // }
-    // console.log(this.el)
-    // var newModelBid = new BidModel(newBid)
-    // var bidPromise = newModelBid.save();
-    // $.when(bidPromise).then(function(val) {
-    //   console.log(val)
-    // })
     console.log(this.$el.find('article').eq(0).data('artid'))
   }
+  // getBids: function () {
+  //
+  //   // get
+  //   this.model.get("total_amount")
+  //   console.log(this.model.attributes.total_amount)
+  // }
 });
 
 //Collection View

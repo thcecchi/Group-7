@@ -12,7 +12,7 @@ var ArtModel = Backbone.Model.extend({
       artist: "random artist",
       image_url: "http://www.fillmurray.com/200/200",
       dimensions: "generic dimensions",
-      startingbid: "generic amount",
+      // startingbid: "generic amount",
       amount: "generic amount",
       auction: "",
       bids: []

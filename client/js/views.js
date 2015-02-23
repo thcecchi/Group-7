@@ -90,7 +90,7 @@ var ArtView = Backbone.View.extend({
     console.log(total)
 
     this.model.set({
-      bid: bidsArr,
+      // bid: bidsArr,
       bidder: localStorage.name,
       total_amount: total
     })
@@ -178,16 +178,14 @@ var AppView = Backbone.View.extend({
     // create art object
     var newModelArt = new ArtModel(newListing)
     var artPromise = newModelArt.save();
-    // var artid = newModelArt.get("id");
-    // newModelArt.attributes.id = artid;
-    // this.collection.add(newModelArt)
+
     var self = this
     $.when(artPromise).then(function(val) {
       console.log(val)
       var artid = newModelArt.get("id");
       newModelArt.attributes.id = artid;
       self.collection.add(newModelArt)
-      // newModelAuction.save();
+
       self.addOneListing(newModelArt); // alternative method
     })
 

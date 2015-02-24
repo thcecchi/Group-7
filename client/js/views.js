@@ -49,13 +49,16 @@ var ArtView = Backbone.View.extend({
   },
   showWinner: function () {
     var winnerTitle = this.model.attributes.title
-    if (this.model.attributes.bidder == localStorage.name) {
+    if (this.model.attributes.bidder == localStorage.name && this.model.attributes.total_amount >= this.model.attributes.bidmin) {
       alert('you won your auction for ' + winnerTitle +' at a price of $' + this.model.attributes.total_amount)
+    }
+
+    else if (this.model.attributes.total_amount < this.model.attributes.bidmin) {
+      alert('the minimum for ' + winnerTitle + ' was not met')
     }
 
     else {
       alert('you lost the auction for ' + winnerTitle + '. The winner was ' + this.model.attributes.bidder)
-
     }
   },
   showTinyView: function () {
@@ -90,44 +93,29 @@ var ArtView = Backbone.View.extend({
     console.log(total)
 
     this.model.set({
-      // bid: bidsArr,
+      bid: bidsArr,
       bidder: localStorage.name,
       total_amount: total
     })
 
     this.model.save();
 
-    // this.getBids();
-
-    // get bids
-    var self = this
-
-    var start = self.model.attributes.starting
-
-    var theTotal = total;
-    $('.bidItem').click(function(){
-      newTotal = self.model.attributes.bid_amount
-
-      console.log(newTotal)
-      theTotal += newTotal;
-        self.model.set({
-          bid: bidsArr,
-          bidder: localStorage.name,
-          total_amount: total
-        })
-      $('.total_amount').text("Total: "+theTotal);
-    });
-
-    $('.total_amount').text("Total: $"+theTotal);
+    this.getBids();
 
     console.log(this.$el.find('article').eq(0).data('artid'))
+  },
+  getBids: function () {
+
+    // get
+    this.model.get("ArtModel.total_amount")
+    this.model.get("Artmodel.bidder")
+
+    $('.total_amount').text("Total: $" + this.model.attributes.total_amount);
+    $('.bidder').text(this.model.attributes.bidder);
+
+    console.log(this.model.attributes.total_amount)
+
   }
-  // getBids: function () {
-  //
-  //   // get
-  //   this.model.get("total_amount")
-  //   console.log(this.model.attributes.total_amount)
-  // }
 });
 
 //Collection View
@@ -155,7 +143,7 @@ var AppView = Backbone.View.extend({
       startx: moment(),
       endx: moment().hours($('#newProduct').find('input[name="newEndx"]').val()),
       amount: $('#newProduct').find('input[name="bidAmount"]').val(),
-      startingbid: $('#newProduct').find('input[name="newStartingBid"]').val()
+      bidmin: $('#newProduct').find('input[name="newBidMin"]').val(),
     };
 
     var newModelAuction = new AuctionModel(newAuction);
@@ -167,7 +155,7 @@ var AppView = Backbone.View.extend({
       artist: $('#newProduct').find('input[name="newArtist"]').val(),
       image_url: $('#newProduct').find('input[name="newImage"]').val(),
       dimensions: $('#newProduct').find('input[name="newDimensions"]').val(),
-      startingbid: $('#newProduct').find('input[name="newStartingBid"]').val(),
+      bidmin: $('#newProduct').find('input[name="newBidMin"]').val(),
       bid_amount: parseInt($('#newProduct').find('input[name="bidAmount"]').val()),
       endx: $( ".newEndx option:selected" ).attr('ref'),
     };

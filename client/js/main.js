@@ -22,6 +22,7 @@ $(function () {
   artCollection.fetch().then(function() {
 
     var appView = new AppView({collection: artCollection})
+    setInterval(ArtView.getBids, 100);
 
   });
 

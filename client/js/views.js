@@ -128,12 +128,12 @@ var AppView = Backbone.View.extend({
   },
   events: {
     'click .createListing': 'createListing',
-    'click #addButton': 'toggleForm'
+    // 'click #addButton': 'toggleForm'
   },
-  toggleForm: function (event) {
-    this.$el.find('#newProduct').toggleClass('show');
-    console.log('shown')
-  },
+  // toggleForm: function (event) {
+  //   this.$el.find('#newProduct').toggleClass('show');
+  //   console.log('shown')
+  // },
 
   createListing: function (e) {
     e.preventDefault();
@@ -153,14 +153,14 @@ var AppView = Backbone.View.extend({
       title: $('#newProduct').find('input[name="newTitle"]').val(),
       description: $('#newProduct').find('input[name="newDescription"]').val(),
       artist: $('#newProduct').find('input[name="newArtist"]').val(),
-      image_url: $('#newProduct').find('input[name="newImage"]').val(),
+      image_url: $('#newProduct').find('.fileinput-filename').text(),
       dimensions: $('#newProduct').find('input[name="newDimensions"]').val(),
       bidmin: $('#newProduct').find('input[name="newBidMin"]').val(),
       bid_amount: parseInt($('#newProduct').find('input[name="bidAmount"]').val()),
       endx: $( ".newEndx option:selected" ).attr('ref'),
     };
 
-    var endTime = $( ".newEndx option:selected" ).attr('ref')
+    var endTime = $(".newEndx option:selected" ).attr('ref')
     console.log(endTime)
 
     // create art object
@@ -170,7 +170,7 @@ var AppView = Backbone.View.extend({
     var self = this
     $.when(artPromise).then(function(val) {
       console.log(val)
-      var artid = newModelArt.get("id");
+      var artid = newModelArt.get("_id");
       newModelArt.attributes.id = artid;
       self.collection.add(newModelArt)
 
@@ -181,7 +181,7 @@ var AppView = Backbone.View.extend({
     // newModelAuction.save();
 
     this.$el.find('#newProduct').find('input', 'textarea').val('');
-    this.toggleForm();
+    // this.toggleForm();
 
   },
   addOneListing: function (listing, idx, arr) {

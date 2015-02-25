@@ -3,7 +3,8 @@ body {
   font-family: 'Special Elite', cursive; }
 
 h1, .h1 {
-  font-size: 64px; }
+  font-size: 64px;
+  border: 2px solid black; }
 
 .loginContainer {
   margin-top: 10%;

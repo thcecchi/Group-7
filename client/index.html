@@ -21,17 +21,71 @@
       </div>
 
       <div class="header row">
-        <div class="col-md-6 col-md-offset-3">
+        <button type="button" class="navbar-toggle btn btn-default col-md-1" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">Add Product</button>
+
+        <div class="col-md-6 col-md-offset-2">
           <header>
             <h1>Live Art Auction</h1>
           </header>
-          <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">toggle</button>
         </div>
       </div>
 
+        <div id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+          <form id="newProduct" action="index.html" class="form-group">
+            <p>
+              <label for="title">Art Title</label>
+              <input type="text" name="newTitle" class="form-control" value="" placeholder="Title of art piece">
+            </p>
+            <p>
+              <p>
+                <label for="image">Image</label>
+                <!-- file input -->
+                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                  <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+                  <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+                  <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                </div>
+                <!--  -->
+              </p>
+              <p>
+                <label for="artist">Artist</label>
+                <input type="text" name="newArtist" class="form-control" value="" placeholder="Artist name">
+              </p>
+              <p>
+                <label for="description">Description</label>
+                <input type="text" name="newDescription" class="form-control" value="" placeholder="Description of art piece">
+              </p>
+              <p>
+                <label for="dimensions">Dimensions</label>
+                <input type="text" name="newDimensions" class="form-control" value="" placeholder="Dimensions of art piece">
+              </p>
+              <p>
+                <label for="endx">End Bidding</label>
+                <select name="newEndx" class="newEndx form-control">
+                  <option ref="60">1 minute</option>
+                  <option ref="120">2 minutes</option>
+                  <option ref="180">3 minutes</option>
+                  <option ref="240">4 minutes</option>
+                  <option ref="300">5 minutes</option>
+                </select>
+              </p>
+              <p>
+                <label for="bidAmount">Incremental Bid Amount</label>
+                <input type="text" name="bidAmount" class="form-control" value="" placeholder="Incremental bid price: 100">
+              </p>
+              <p>
+                <label for="bidmin">Bid Minimum Amount</label>
+                <input type="text" name="newBidMin" class="form-control" value="" placeholder="Minimum price: 100">
+              </p>
+              <button name="submitProduct" class="createListing btn btn-default">Submit New Art</button>
+            </form>
+        </div>
+
+
+      <!-- old form -->
       <section class="row">
         <div class="col-md-8 col-md-offset-2">
-          <button id="addButton" name="addProduct" class="btn btn-default center-block">Add New Art</button>
+          <!-- <button id="addButton" name="addProduct" class="btn btn-default center-block">Add New Art</button>
           <form id="newProduct" action="index.html" class="form-group">
             <p>
               <label for="title">Art Title</label>
@@ -73,7 +127,7 @@
                 <input type="text" name="newBidMin" class="form-control" value="" placeholder="Minimum price: 100">
               </p>
               <button name="submitProduct" class="createListing btn btn-default">Submit New Art</button>
-            </form>
+            </form> -->
           </div>
       </section>
    </div>

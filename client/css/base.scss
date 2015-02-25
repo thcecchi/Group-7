@@ -39,10 +39,28 @@ font-size: 64px;
 
 .header {
   display: none;
+
+  .navbar-toggle {
+    float: left;
+    display: inline-block;
+    margin-left: 3%;
+    margin-top: 2%;
+  }
 }
 
 #newProduct {
-  display: none;
+  padding: 3%;
+
+
+  .createListing {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+}
+
+.fileinput-filename {
+  font-size: .7em;
 }
 
 .hide, .INFO {

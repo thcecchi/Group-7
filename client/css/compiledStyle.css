@@ -30,9 +30,21 @@ h1, .h1 {
 
 .header {
   display: none; }
+  .header .navbar-toggle {
+    float: left;
+    display: inline-block;
+    margin-left: 3%;
+    margin-top: 2%; }
 
 #newProduct {
-  display: none; }
+  padding: 3%; }
+  #newProduct .createListing {
+    margin-left: auto;
+    margin-right: auto;
+    display: block; }
+
+.fileinput-filename {
+  font-size: .7em; }
 
 .hide, .INFO {
   display: none; }
